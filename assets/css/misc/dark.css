@@ -3,7 +3,7 @@
     background-color: var(--dark-mode-bg-color);
 }
 
-.dark-mode a:not(.menu-item-link):not(.post-tag):not(.kg-btn):not(.kg-nft-card-container):not(.kg-product-card-button):not(.kg-header-card-button),
+.dark-mode a:not(.menu-item-link):not(.post-tag):not(.post-frame-tag):not(.gh-btn):not(.gh-button-share):not(.home-hero-jump):not(.kg-btn):not(.kg-nft-card-container):not(.kg-product-card-button):not(.kg-header-card-button),
 .dark-mode h1,
 .dark-mode h2,
 .dark-mode h3,
@@ -79,7 +79,6 @@
 
 .dark-mode .featured-control,
 .dark-mode .featured-post .post-media::after,
-.dark-mode .featured-post .post-tag,
 .dark-mode .post-feed .post-media::after,
 .dark-mode .term-image-container,
 .dark-mode .gh-button-share,
@@ -92,10 +91,61 @@
     color: var(--dark-mode-primary-text-color);
 }
 
-.dark-mode .featured-control:hover,
-.dark-mode .gh-button-share:hover {
+.dark-mode .featured-post .post-media::after,
+.dark-mode .post-feed .post-media::after,
+.dark-mode .post-frame-tag {
+    border-color: var(--dark-mode-primary-text-color);
+}
+
+.dark-mode .post-frame-tag {
     color: var(--dark-gray-color);
-    background-color: var(--white-color);
+    background-color: var(--yellow-color);
+    border-color: var(--white-color);
+    box-shadow: 0 2px 0 var(--dark-mode-bg-color);
+}
+
+.dark-mode .post-frame-tag:hover {
+    color: var(--dark-gray-color);
+}
+
+.dark-mode :where(.gh-btn, .kg-btn, .kg-product-card-button, .kg-header-card-button, .home-hero-jump, .featured-control, .gh-button-share, .pagination a) {
+    --button-circle-bg: var(--dark-mode-darker-bg-color);
+    color: var(--dark-gray-color);
+    background-color: var(--yellow-color);
+    border-color: var(--dark-gray-color);
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.28);
+}
+
+.dark-mode a.gh-btn,
+.dark-mode a.gh-button-share,
+.dark-mode a.home-hero-jump,
+.dark-mode .pagination a,
+.dark-mode .kg-btn,
+.dark-mode .kg-product-card-button,
+.dark-mode .kg-header-card-button,
+.dark-mode .featured-control {
+    color: var(--dark-gray-color);
+}
+
+.dark-mode :where(.gh-btn, .kg-btn, .kg-product-card-button, .kg-header-card-button, .home-hero-jump, .featured-control, .gh-button-share, .pagination a) svg,
+.dark-mode :where(.gh-btn, .kg-btn, .kg-product-card-button, .kg-header-card-button, .home-hero-jump, .featured-control, .gh-button-share, .pagination a) .button-arrow-icon {
+    color: inherit;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.dark-mode :where(.gh-btn, .kg-btn, .kg-product-card-button, .kg-header-card-button, .home-hero-jump, .featured-control, .gh-button-share, .pagination a):hover {
+    box-shadow: 0 3px 0 rgba(255, 255, 255, 0.36);
+    opacity: 1;
+}
+
+.dark-mode :where(.gh-btn, .kg-btn, .kg-product-card-button, .kg-header-card-button, .home-hero-jump, .featured-control, .gh-button-share, .pagination a)::after {
+    border-color: var(--dark-mode-primary-text-color);
+}
+
+.dark-mode .toggle-track {
+    background-color: var(--dark-mode-darker-bg-color);
+    border-color: var(--dark-mode-border-color);
 }
 
 .dark-mode .sep::after {
@@ -108,10 +158,6 @@
 
 .dark-mode blockquote {
     border-color: var(--white-color);
-}
-
-.dark-mode button {
-    color: var(--white-color);
 }
 
 .dark-mode input[type="range"] {

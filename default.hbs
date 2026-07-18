@@ -1,17 +1,90 @@
 <!DOCTYPE html>
-<html lang="{{@site.locale}}"{{#match @custom.color_scheme "Dark"}} class="dark-mode"{{/match}}>
+<html lang="{{@site.locale}}"{{#match @custom.color_scheme "Dark"}} class="dark-mode is-default-dark"{{/match}}>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{meta_title page=(t " (Page %)")}}</title>
+    <script>
+        (function () {
+            try {
+                var storedTheme = localStorage.getItem('alto-theme');
+                var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+                    document.documentElement.classList.add('dark-mode');
+                } else if (storedTheme === 'light') {
+                    document.documentElement.classList.remove('dark-mode');
+                }
+            } catch (error) {}
+        })();
+    </script>
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+    <style>
+        :root {
+            {{#if @custom.accent_color}}
+            --ghost-accent-color: {{@custom.accent_color}};
+            --primary-color: {{@custom.accent_color}};
+            --coral-color: {{@custom.accent_color}};
+            {{/if}}
+            {{#if @custom.decoration_color}}
+            --yellow-color: {{@custom.decoration_color}};
+            {{/if}}
+            {{#if @custom.background_color}}
+            --color-white: {{@custom.background_color}};
+            --white-color: {{@custom.background_color}};
+            {{/if}}
+            {{#if @custom.boxes_background_color}}
+            --color-lighter-gray: {{@custom.boxes_background_color}};
+            --light-gray-color: {{@custom.boxes_background_color}};
+            {{/if}}
+            {{#if @custom.boxes_border_color}}
+            --color-light-gray: {{@custom.boxes_border_color}};
+            --mid-gray-color: {{@custom.boxes_border_color}};
+            {{/if}}
+            {{#if @custom.general_border_color}}
+            --border-color: {{@custom.general_border_color}};
+            {{/if}}
+        }
+    </style>
 
     {{ghost_head}}
 </head>
 
 <body class="{{body_class}} is-head-{{#match @custom.navigation_layout "Logo on the left"}}left-logo{{else match @custom.navigation_layout "Logo in the middle"}}middle-logo{{else}}stacked{{/match}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}" data-more-label="{{t "More"}}">
 <div class="site">
+    <div class="site-hero-doodles" aria-hidden="true">
+        <span class="site-doodle site-doodle-hash site-doodle-hash-a">
+            <span></span><span></span><span></span><span></span>
+        </span>
+        <span class="site-doodle site-doodle-ring site-doodle-ring-a"></span>
+        <span class="site-doodle site-doodle-lines site-doodle-lines-a"></span>
+        <span class="site-doodle site-doodle-chip site-doodle-chip-a">HELLO</span>
+        <span class="site-doodle site-doodle-spark site-doodle-spark-a">
+            <span></span><span></span>
+        </span>
+        <span class="site-doodle site-doodle-pills site-doodle-pills-a">
+            <span></span><span></span><span></span>
+        </span>
+        <span class="site-doodle site-doodle-dots site-doodle-dots-a">
+            <span></span><span></span><span></span><span></span><span></span>
+        </span>
+        <span class="site-doodle site-doodle-bubble site-doodle-bubble-a">IDEA</span>
+        <span class="site-doodle site-doodle-hash site-doodle-hash-b">
+            <span></span><span></span><span></span><span></span>
+        </span>
+        <span class="site-doodle site-doodle-ring site-doodle-ring-b"></span>
+        <span class="site-doodle site-doodle-lines site-doodle-lines-b"></span>
+        <span class="site-doodle site-doodle-chip site-doodle-chip-b">NOTE</span>
+        <span class="site-doodle site-doodle-spark site-doodle-spark-b">
+            <span></span><span></span>
+        </span>
+        <span class="site-doodle site-doodle-pill site-doodle-pill-a"></span>
+        <span class="site-doodle site-doodle-dots site-doodle-dots-b">
+            <span></span><span></span><span></span><span></span><span></span>
+        </span>
+        <span class="site-doodle site-doodle-bubble site-doodle-bubble-b">WOW</span>
+    </div>
 
     <header id="gh-head" class="gh-head gh-outer">
         <div class="gh-head-inner">
@@ -29,6 +102,13 @@
                     </a>
                 </div>
                 <button class="gh-search gh-icon-btn" aria-label="{{t "Search this site"}}" data-ghost-search>{{> "icons/search"}}</button>
+                <button class="theme-toggle theme-toggle-mobile" type="button" aria-label="Toggle dark mode" aria-pressed="false" data-theme-toggle>
+                    <span class="toggle-track" aria-hidden="true">
+                        <span class="toggle-sun">{{> "icons/sun"}}</span>
+                        <span class="toggle-moon">{{> "icons/moon"}}</span>
+                        <span class="toggle-thumb"></span>
+                    </span>
+                </button>
                 <button class="gh-burger" aria-label="{{t "Toggle menu"}}"></button>
             </div>
 
@@ -61,6 +141,13 @@
                         {{/unless}}
                     </div>
                 {{/unless}}
+                <button class="theme-toggle theme-toggle-desktop" type="button" aria-label="Toggle dark mode" aria-pressed="false" data-theme-toggle>
+                    <span class="toggle-track" aria-hidden="true">
+                        <span class="toggle-sun">{{> "icons/sun"}}</span>
+                        <span class="toggle-moon">{{> "icons/moon"}}</span>
+                        <span class="toggle-thumb"></span>
+                    </span>
+                </button>
             </div>
         </div>
     </header>

@@ -1,12 +1,16 @@
 {
-    "name": "alto",
+    "name": "alto-shrimpy",
     "description": "A Ghost theme",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "private": true,
     "engines": {
         "ghost": ">=5.0.0"
     },
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/XavierWang3P/alto-theme-shrimpy.git"
+    },
     "author": {
         "name": "Ghost Foundation",
         "email": "hello@ghost.org",
@@ -74,6 +78,36 @@
                     "Dark"
                 ],
                 "default": "Light"
+            },
+            "accent_color": {
+                "type": "color",
+                "default": "#ffadc8",
+                "group": "homepage"
+            },
+            "decoration_color": {
+                "type": "color",
+                "default": "#ffd682",
+                "group": "homepage"
+            },
+            "background_color": {
+                "type": "color",
+                "default": "#fff6e6",
+                "group": "homepage"
+            },
+            "boxes_background_color": {
+                "type": "color",
+                "default": "#fff0d3",
+                "group": "homepage"
+            },
+            "boxes_border_color": {
+                "type": "color",
+                "default": "#ffebc4",
+                "group": "homepage"
+            },
+            "general_border_color": {
+                "type": "color",
+                "default": "#707070",
+                "group": "homepage"
             },
             "white_logo_for_dark_mode": {
                 "type": "image"

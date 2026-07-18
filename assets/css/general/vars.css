@@ -24,8 +24,13 @@
     --content-font-size: 1.8rem;
     --content-width: 720px;
     --header-spacing: 60px;
-    --radius-image: 12px;
+    --radius-image: 28px;
     --border-color: #30302e;
     --focus-color: #006edc;
     --section-spacing: clamp(64px, 9vw, 120px);
+    --button-main-color: var(--yellow-color);
+    --button-circle-bg: color-mix(in srgb, var(--white-color) 82%, var(--button-main-color));
+    --button-outline-offset-x: 2px;
+    --button-outline-offset-y: 3px;
+    --button-circle-size: 23px;
 }

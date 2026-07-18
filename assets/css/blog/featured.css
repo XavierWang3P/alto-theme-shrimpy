@@ -67,23 +67,53 @@
 
 .featured-post {
     position: relative;
-    z-index: 0;
+    z-index: 5;
     margin: 0;
     scroll-snap-align: start;
 }
 
+.featured-post:hover,
+.featured-post:focus-within {
+    z-index: 30;
+}
+
 .featured-post .post-media {
+    --post-frame-offset-x: -14px;
+    --post-frame-offset-y: 14px;
+    --post-frame-tag-width: 38px;
     position: relative;
+    z-index: 5;
     margin: 0 8px 28px 0;
+}
+
+.featured-post .post-media:hover,
+.featured-post .post-media:focus-within {
+    --post-frame-offset-x: 0;
+    --post-frame-offset-y: 0;
+    z-index: 30;
 }
 
 .featured-post .post-media::after {
     position: absolute;
-    inset: 8px -8px -8px 8px;
-    z-index: -1;
+    inset: 0;
+    z-index: 12;
+    pointer-events: none;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-image);
     content: "";
+    transform: translate(var(--post-frame-offset-x), var(--post-frame-offset-y));
+    transition: border-color 180ms var(--animation-base), transform 220ms var(--animation-base);
+}
+
+.featured-post .post-frame-tag {
+    top: 30px;
+    left: 0;
+    min-width: 38px;
+    max-width: 38px;
+    min-height: 88px;
+    padding: 12px 3px;
+    font-size: 1.35rem;
+    transform: translate(calc(var(--post-frame-offset-x) - var(--post-frame-tag-width) / 2), var(--post-frame-offset-y));
 }
 
 .featured-post .post-image-link {
@@ -140,7 +170,6 @@
 .featured-post .post-tag {
     padding: 3px 9px;
     color: var(--primary-text-color);
-    border: 1px solid var(--border-color);
     border-radius: 999px;
 }
 
@@ -166,5 +195,33 @@
     .featured-posts {
         grid-auto-columns: 84%;
         gap: 20px;
+    }
+
+    .featured-post .post-media {
+        margin-left: 0;
+    }
+
+    .featured-post .post-media {
+        --post-frame-offset-x: -10px;
+        --post-frame-offset-y: 10px;
+        --post-frame-tag-width: 76px;
+    }
+
+    .featured-post .post-frame-tag {
+        top: 8px;
+        left: var(--gap);
+        min-width: 0;
+        max-width: none;
+        min-height: 0;
+        padding: 7px 14px 6px;
+        line-height: 1;
+        text-transform: uppercase;
+        writing-mode: horizontal-tb;
+        transform: translate(calc(var(--post-frame-offset-x) - var(--post-frame-tag-width) / 2), var(--post-frame-offset-y)) rotate(2deg);
+    }
+
+    .featured-post .post-media:hover .post-frame-tag,
+    .featured-post .post-media:focus-within .post-frame-tag {
+        transform: translate(calc(var(--post-frame-offset-x) - var(--post-frame-tag-width) / 2), var(--post-frame-offset-y)) rotate(0deg);
     }
 }

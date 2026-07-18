@@ -1,0 +1,9 @@
+{{#match @site.locale "en"}}
+    {{date published_at format="DD MM YYYY"}}
+{{else match @site.locale "en-US"}}
+    {{date published_at format="DD MM YYYY"}}
+{{else match @site.locale "en-us"}}
+    {{date published_at format="DD MM YYYY"}}
+{{else}}
+    {{date published_at format="YYYY 年 MM 月 DD 日"}}
+{{/match}}

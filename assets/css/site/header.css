@@ -6,3 +6,25 @@
 .gh-head-actions {
     font-weight: 600;
 }
+
+.gh-head-actions {
+    gap: 18px;
+}
+
+.theme-toggle.theme-toggle-mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    #gh-head .gh-head-brand {
+        grid-template-columns: 1fr auto auto auto;
+    }
+
+    .theme-toggle.theme-toggle-mobile {
+        display: inline-flex;
+    }
+
+    .theme-toggle.theme-toggle-desktop {
+        display: none;
+    }
+}

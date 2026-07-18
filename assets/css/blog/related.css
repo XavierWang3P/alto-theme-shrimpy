@@ -1,5 +1,6 @@
 .related-posts {
     margin-top: 80px;
+    margin-bottom: clamp(96px, 12vw, 160px);
 }
 
 .related-title {
@@ -43,4 +44,10 @@
 
 .related-feed .post-image-link:hover .post-image {
     transform: scale(1.025);
+}
+
+@media (max-width: 767px) {
+    .related-posts {
+        margin-bottom: 88px;
+    }
 }

@@ -1,3 +1,14 @@
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: inherit;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+}
+
 .toggle-track {
     position: relative;
     display: inline-flex;
@@ -6,6 +17,7 @@
     cursor: pointer;
     user-select: none;
     background-color: var(--dark-gray-color);
+    border: 1px solid var(--dark-gray-color);
     border-radius: 30px;
 }
 
@@ -29,8 +41,8 @@
 
 .toggle-thumb {
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 1px;
+    left: 1px;
     width: 20px;
     height: 20px;
     background-color: var(--white-color);

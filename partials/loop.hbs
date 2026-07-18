@@ -2,6 +2,9 @@
 
     {{#if feature_image}}
     <figure class="post-media gh-canvas">
+        {{#primary_tag}}
+            <a class="post-frame-tag" href="{{url}}" title="{{name}}">{{name}}</a>
+        {{/primary_tag}}
         <div class="u-placeholder horizontal kg-width-wide">
             <a class="post-image-link" href="{{url}}">
                 <img
@@ -29,7 +32,7 @@
             </h2>
             <div class="post-meta">
                 <span class="post-meta-item post-meta-date">
-                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date published_at format="DD MMM YYYY"}}</time>
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{> "date"}}</time>
                 </span>
                 {{#if reading_time}}
                     <span class="post-meta-item post-meta-length">{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>

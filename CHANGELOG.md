@@ -2,6 +2,21 @@
 
 All notable changes to this project are documented in this file.
 
+## Unreleased
+
+### Changed
+
+- Refined post-card and featured-card frame labels so the capsule stays aligned to the border line in both default and hover states.
+- Improved dark-mode readability for global buttons and frame labels by correcting text and icon colors.
+- Increased article hero title contrast on bright feature images with a stronger overlay and text shadow treatment.
+
+## 1.1.1 - 2026-07-18
+
+### Changed
+
+- Renamed the theme package to `alto-shrimpy`.
+- Updated repository metadata to `XavierWang3P/alto-theme-shrimpy`.
+
 ## 1.1.0 - 2026-07-18
 
 ### Added

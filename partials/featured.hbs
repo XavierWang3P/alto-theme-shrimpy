@@ -16,6 +16,9 @@
         {{#foreach featured}}
         <article class="featured-post {{post_class}}{{#unless feature_image}} no-image{{/unless}}">
             <figure class="post-media">
+                {{#primary_tag}}
+                    <a class="post-frame-tag" href="{{url}}" title="{{name}}">{{name}}</a>
+                {{/primary_tag}}
                 <a class="post-image-link" href="{{url}}">
                     {{#if feature_image}}
                         <img
@@ -38,7 +41,7 @@
             <header class="post-header">
                 <h3 class="post-title"><a class="post-title-link" href="{{url}}">{{title}}</a></h3>
                 <div class="post-meta">
-                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date published_at format="DD MMM YYYY"}}</time>
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{> "date"}}</time>
                     {{#primary_tag}}
                         <a class="post-tag" href="{{url}}">{{name}}</a>
                     {{/primary_tag}}

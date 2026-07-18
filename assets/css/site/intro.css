@@ -1,7 +1,8 @@
 .home-hero {
     position: relative;
     display: flex;
-    min-height: min(70svh, 720px);
+    min-height: calc(100vh - 100px);
+    min-height: calc(100svh - 100px);
     overflow: hidden;
     color: var(--white-color);
     background-color: var(--dark-gray-color);
@@ -32,7 +33,94 @@
     object-fit: cover;
 }
 
+.home-hero-doodles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.home-doodle {
+    position: absolute;
+    display: block;
+    color: var(--dark-gray-color);
+}
+
+.home-doodle-asterisk {
+    top: clamp(140px, 24vh, 240px);
+    right: clamp(24px, 9vw, 140px);
+    width: clamp(70px, 10vw, 132px);
+    height: clamp(70px, 10vw, 132px);
+    transform: rotate(-9deg);
+}
+
+.home-doodle-asterisk::before,
+.home-doodle-asterisk::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16%;
+    height: 100%;
+    background-color: var(--yellow-color);
+    border: 2px solid var(--dark-gray-color);
+    border-radius: 999px;
+    content: "";
+    transform: translate(-50%, -50%);
+    box-shadow: 18px 0 0 var(--coral-color), -18px 0 0 var(--teal-color);
+}
+
+.home-doodle-asterisk::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.home-doodle-ring {
+    right: clamp(36px, 12vw, 180px);
+    bottom: clamp(48px, 9vw, 110px);
+    width: clamp(54px, 8vw, 96px);
+    height: clamp(54px, 8vw, 96px);
+    background-color: var(--coral-color);
+    border: 2px solid var(--dark-gray-color);
+    border-radius: 50%;
+    transform: rotate(12deg);
+}
+
+.home-doodle-ring::after {
+    position: absolute;
+    inset: 22%;
+    background-color: var(--white-color);
+    border: 2px solid var(--dark-gray-color);
+    border-radius: inherit;
+    content: "";
+}
+
+.home-doodle-line {
+    right: clamp(120px, 22vw, 330px);
+    bottom: clamp(82px, 15vw, 170px);
+    width: clamp(92px, 16vw, 180px);
+    height: 18px;
+    border-top: 4px solid var(--white-color);
+    border-bottom: 4px solid var(--yellow-color);
+    transform: rotate(-11deg);
+}
+
+.home-doodle-chip {
+    top: clamp(120px, 22vh, 220px);
+    left: clamp(24px, 62vw, 760px);
+    padding: 6px 12px 5px;
+    font-size: clamp(1.1rem, 1.3vw, 1.5rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--dark-gray-color);
+    letter-spacing: 0.08em;
+    background-color: var(--teal-color);
+    border: 2px solid var(--dark-gray-color);
+    border-radius: 999px;
+    transform: rotate(8deg);
+}
+
 .home-hero-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: flex-end;
     width: 100%;
@@ -74,7 +162,7 @@
     background-color: var(--yellow-color);
     border: 1px solid var(--dark-gray-color);
     border-radius: 999px;
-    transition: color 180ms var(--animation-base), background-color 180ms var(--animation-base), transform 180ms var(--animation-base);
+    transition: color 180ms var(--animation-base), background-color 180ms var(--animation-base), border-color 180ms var(--animation-base), box-shadow 180ms var(--animation-base), transform 180ms var(--animation-base);
 }
 
 .home-hero-jump:hover {
@@ -91,7 +179,8 @@
 
 @media (max-width: 767px) {
     .home-hero {
-        min-height: min(68svh, 620px);
+        min-height: calc(100vh - 64px);
+        min-height: calc(100svh - 64px);
     }
 
     .home-hero:not(.has-cover)::after {
@@ -100,5 +189,42 @@
 
     .home-hero-title {
         font-size: clamp(4rem, 15vw, 6.4rem);
+    }
+
+    .home-doodle-asterisk {
+        top: 90px;
+        right: -18px;
+        width: 78px;
+        height: 78px;
+    }
+
+    .home-doodle-asterisk::before,
+    .home-doodle-asterisk::after {
+        box-shadow: 12px 0 0 var(--coral-color), -12px 0 0 var(--teal-color);
+    }
+
+    .home-doodle-ring {
+        right: 20px;
+        bottom: 138px;
+        width: 54px;
+        height: 54px;
+    }
+
+    .home-doodle-line {
+        right: 78px;
+        bottom: 166px;
+        width: 86px;
+        height: 14px;
+    }
+
+    .home-doodle-chip {
+        top: 128px;
+        left: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-doodle {
+        transform: none;
     }
 }

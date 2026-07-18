@@ -27,7 +27,7 @@
                     <div class="gh-inner">
                         <div class="post-meta">
                             <span class="post-meta-item post-meta-date">
-                                <time datetime="{{date format="YYYY-MM-DD"}}">{{date published_at format="DD MMM YYYY"}}</time>
+                                <time datetime="{{date format="YYYY-MM-DD"}}">{{> "date"}}</time>
                             </span>
                             {{#if reading_time}}
                                 <span class="post-meta-item post-meta-length">{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
@@ -47,7 +47,7 @@
             <header class="article-header gh-canvas">
                 <div class="post-meta">
                     <span class="post-meta-item post-meta-date">
-                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date published_at format="DD MMM YYYY"}}</time>
+                        <time datetime="{{date format="YYYY-MM-DD"}}">{{> "date"}}</time>
                     </span>
                     {{#if reading_time}}
                         <span class="post-meta-item post-meta-length">{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
