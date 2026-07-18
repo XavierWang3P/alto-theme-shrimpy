@@ -1,9 +1,16 @@
 {{!< default}}
 
+{{#is "home"}}
+    {{> "home-hero"}}
+    {{#if @custom.show_featured_posts}}
+        {{> "featured"}}
+    {{/if}}
+{{/is}}
+
 <div class="content-area">
 <main class="site-main">
 
-    <div class="post-feed">
+    <div class="post-feed" id="latest-posts">
         {{#foreach posts}}
             {{> "loop"}}
         {{/foreach}}

@@ -5,7 +5,7 @@
 
         <div class="author-image-placeholder u-placeholder">
             {{#if profile_image}}
-                <img class="author-image u-object-fit" src="{{img_url profile_image size="xs"}}" alt="{{name}}" loading="lazy">
+                <img class="author-image u-object-fit" src="{{img_url profile_image size="xs"}}" alt="{{name}}" loading="lazy" decoding="async">
             {{else}}
                 {{> "icons/avatar"}}
             {{/if}}

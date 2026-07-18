@@ -1,0 +1,30 @@
+<section class="home-hero{{#if @site.cover_image}} has-cover{{/if}}" aria-labelledby="home-hero-title">
+    {{#if @site.cover_image}}
+        <img
+            class="home-hero-image"
+            srcset="{{img_url @site.cover_image size="s"}} 400w,
+                    {{img_url @site.cover_image size="m"}} 750w,
+                    {{img_url @site.cover_image size="l"}} 960w,
+                    {{img_url @site.cover_image size="xl"}} 1140w,
+                    {{img_url @site.cover_image size="xxl"}} 1920w"
+            sizes="100vw"
+            src="{{img_url @site.cover_image size="xxl"}}"
+            alt=""
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+        >
+    {{/if}}
+    <div class="home-hero-content gh-outer">
+        <div class="gh-inner">
+            <h1 class="home-hero-title" id="home-hero-title">{{@site.title}}</h1>
+            {{#if @site.description}}
+                <p class="home-hero-description">{{@site.description}}</p>
+            {{/if}}
+            <a class="home-hero-jump" href="#latest-posts">
+                <span>{{t "Latest"}}</span>
+                {{> "icons/arrow-right"}}
+            </a>
+        </div>
+    </div>
+</section>

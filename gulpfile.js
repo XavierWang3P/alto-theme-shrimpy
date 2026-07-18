@@ -1,6 +1,5 @@
 const {series, parallel, watch, src, dest} = require('gulp');
 const pump = require('pump');
-const fs = require('fs');
 const path = require('path');
 const order = require('ordered-read-streams');
 
@@ -55,25 +54,28 @@ function css(done) {
     ], handleError(done));
 }
 
-function getJsFiles(version) {
-    const jsFiles = [
-        src(`${sharedThemeAssetsPath}/assets/js/${version}/lib/**/*.js`),
-        src(`${sharedThemeAssetsPath}/assets/js/${version}/main.js`),
-    ];
-
-    if (fs.existsSync(`assets/js/lib`)) {
-        jsFiles.push(src(`assets/js/lib/*.js`));
-    }
-
-    jsFiles.push(src(`assets/js/main.js`));
-
-    return jsFiles;
-}
-
 function js(done) {
     pump([
-        order(getJsFiles('v1'), {sourcemaps: true}),
+        src('assets/js/main.js', {sourcemaps: true}),
         concat('main.min.js'),
+        uglify(),
+        dest('assets/built/', {sourcemaps: '.'}),
+        livereload()
+    ], handleError(done));
+}
+
+function postJs(done) {
+    const sharedJsPath = `${sharedThemeAssetsPath}/assets/js/v1`;
+
+    pump([
+        order([
+            src(`${sharedJsPath}/lib/vendor/photoswipe.min.js`),
+            src(`${sharedJsPath}/lib/vendor/photoswipe-ui-default.min.js`),
+            src(`${sharedJsPath}/lib/lightbox.js`),
+            src(`${sharedJsPath}/lib/vendor/reframe.min.js`),
+            src('assets/js/post.js')
+        ], {sourcemaps: true}),
+        concat('post.min.js'),
         uglify(),
         dest('assets/built/', {sourcemaps: '.'}),
         livereload()
@@ -109,9 +111,9 @@ function locales(done) {
 const localesWatcher = () => watch('./locales-local/**/*.json', locales);
 const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs'], hbs);
 const cssWatcher = () => watch('assets/css/**/*.css', css);
-const jsWatcher = () => watch('assets/js/**/*.js', js);
+const jsWatcher = () => watch('assets/js/**/*.js', parallel(js, postJs));
 const watcher = parallel(hbsWatcher, cssWatcher, jsWatcher, localesWatcher);
-const build = series(css, js, locales);
+const build = series(css, parallel(js, postJs), locales);
 
 exports.build = build;
 exports.zip = series(build, zipper);

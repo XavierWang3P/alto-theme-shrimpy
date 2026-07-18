@@ -1,0 +1,43 @@
+:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 4px;
+}
+
+.post-title,
+.term-name,
+.related-title {
+    text-wrap: balance;
+}
+
+:lang(zh) :where(.post-title, .home-hero-title, .term-name) {
+    word-break: auto-phrase;
+}
+
+:lang(zh) .post-title {
+    text-wrap: pretty;
+}
+
+.gh-content {
+    line-height: 1.82;
+    text-wrap: pretty;
+}
+
+.gh-content p,
+.gh-content li {
+    overflow-wrap: break-word;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

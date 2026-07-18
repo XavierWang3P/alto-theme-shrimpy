@@ -2,14 +2,37 @@
     margin-bottom: 100px;
 }
 
+.post-feed .post + .post,
+.related-posts,
+.gh-comments {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 640px;
+}
+
 .post-media {
     margin-bottom: 20px;
 }
 
 .post-feed .post-media {
+    position: relative;
+    z-index: 0;
     width: 100%;
     max-width: calc(960px + var(--gap) * 2);
     margin: 0 auto 40px;
+}
+
+.post-feed .post-media::after {
+    position: absolute;
+    inset: 10px calc(var(--gap) - 8px) -8px calc(var(--gap) + 8px);
+    z-index: -1;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-image);
+    content: "";
+}
+
+.post-feed .post-media .u-placeholder {
+    overflow: hidden;
+    border-radius: var(--radius-image);
 }
 
 .post-media-tag {
@@ -40,6 +63,7 @@
     font-weight: 800;
     letter-spacing: -0.01em;
     word-break: break-word;
+    text-wrap: balance;
 }
 
 .has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :where(.post-feed, .single-post) .post-title {
@@ -66,7 +90,10 @@
 
 .post-excerpt {
     margin-top: 12px;
+    font-size: 1.7rem;
+    line-height: 1.72;
     word-break: break-word;
+    text-wrap: pretty;
 }
 
 .has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .post-excerpt {
@@ -80,5 +107,9 @@
 
     .post-feed .post-title {
         font-size: 24px;
+    }
+
+    .post-feed .post-media::after {
+        inset: 8px calc(var(--gap) - 6px) -6px calc(var(--gap) + 6px);
     }
 }

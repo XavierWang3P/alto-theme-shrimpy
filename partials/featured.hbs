@@ -1,35 +1,51 @@
-{{#get "posts" filter="featured:true" limit="10" include="tags" as |featured|}}{{#if featured}}
-<div class="gh-outer"><div class="featured-posts carousel owl gh-inner">
-
-    {{#foreach featured}}
-    <article class="{{post_class}}{{#unless feature_image}} no-image{{/unless}}">
-
-        <figure class="post-media">
-        <div class="u-placeholder square">
-            <a class="post-image-link" href="{{url}}">
-                {{#primary_tag}}
-                    <span class="post-media-tag post-tag-{{slug}}">{{name}}</span>
-                {{/primary_tag}}
-                {{#if feature_image}}
-                    <img class="post-image u-object-fit" src="{{img_url feature_image size="m"}}" alt="{{title}}">
-                {{/if}}
-            </a>
+{{#get "posts" filter="featured:true" limit="8" include="tags" as |featured|}}{{#if featured}}
+<section class="featured-section gh-outer" aria-labelledby="featured-title">
+    <div class="featured-header gh-inner">
+        <h2 id="featured-title">{{t "Featured"}}</h2>
+        <div class="featured-controls" aria-label="{{t "Featured"}}">
+            <button class="featured-control" type="button" data-featured-previous aria-label="{{t "Previous"}}">
+                {{> "icons/arrow-left"}}
+            </button>
+            <button class="featured-control" type="button" data-featured-next aria-label="{{t "Next"}}">
+                {{> "icons/arrow-right"}}
+            </button>
         </div>
-        </figure>
+    </div>
 
-        <header class="post-header">
-            <h2 class="post-title">
-                <a class="post-title-link" href="{{url}}">{{title}}</a>
-            </h2>
-            <div class="post-meta">
-                <span class="post-meta-item post-meta-date">
+    <div class="featured-posts gh-inner" data-featured-scroll tabindex="0" aria-labelledby="featured-title">
+        {{#foreach featured}}
+        <article class="featured-post {{post_class}}{{#unless feature_image}} no-image{{/unless}}">
+            <figure class="post-media">
+                <a class="post-image-link" href="{{url}}">
+                    {{#if feature_image}}
+                        <img
+                            class="post-image"
+                            srcset="{{img_url feature_image size="s"}} 400w,
+                                    {{img_url feature_image size="m"}} 750w,
+                                    {{img_url feature_image size="l"}} 960w"
+                            sizes="(min-width: 1200px) 28vw, (min-width: 768px) 42vw, 82vw"
+                            src="{{img_url feature_image size="m"}}"
+                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    {{else}}
+                        <span class="featured-post-placeholder" aria-hidden="true"></span>
+                    {{/if}}
+                </a>
+            </figure>
+
+            <header class="post-header">
+                <h3 class="post-title"><a class="post-title-link" href="{{url}}">{{title}}</a></h3>
+                <div class="post-meta">
                     <time datetime="{{date format="YYYY-MM-DD"}}">{{date published_at format="DD MMM YYYY"}}</time>
-                </span>
-            </div>
-        </header>
-
-    </article>
-    {{/foreach}}
-
-</div></div>
+                    {{#primary_tag}}
+                        <a class="post-tag" href="{{url}}">{{name}}</a>
+                    {{/primary_tag}}
+                </div>
+            </header>
+        </article>
+        {{/foreach}}
+    </div>
+</section>
 {{/if}}{{/get}}

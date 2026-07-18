@@ -73,6 +73,31 @@
     background-color: var(--dark-mode-bg-color) !important;
 }
 
+.dark-mode .gh-foot {
+    border-color: var(--dark-mode-border-color);
+}
+
+.dark-mode .featured-control,
+.dark-mode .featured-post .post-media::after,
+.dark-mode .featured-post .post-tag,
+.dark-mode .post-feed .post-media::after,
+.dark-mode .term-image-container,
+.dark-mode .gh-button-share,
+.dark-mode .pagination a:hover {
+    border-color: var(--dark-mode-border-color);
+}
+
+.dark-mode .featured-control,
+.dark-mode .featured-post .post-tag {
+    color: var(--dark-mode-primary-text-color);
+}
+
+.dark-mode .featured-control:hover,
+.dark-mode .gh-button-share:hover {
+    color: var(--dark-gray-color);
+    background-color: var(--white-color);
+}
+
 .dark-mode .sep::after {
     background-color: var(--dark-mode-border-color);
 }

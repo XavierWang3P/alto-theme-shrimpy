@@ -1,0 +1,104 @@
+.home-hero {
+    position: relative;
+    display: flex;
+    min-height: min(70svh, 720px);
+    overflow: hidden;
+    color: var(--white-color);
+    background-color: var(--dark-gray-color);
+    isolation: isolate;
+}
+
+.home-hero::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.44);
+    content: "";
+}
+
+.home-hero:not(.has-cover)::after {
+    right: 42%;
+    background-color: var(--coral-color);
+    transform: skewX(-10deg) translateX(-18%);
+    transform-origin: bottom;
+}
+
+.home-hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-hero-content {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    padding-top: clamp(160px, 24vh, 260px);
+    padding-bottom: clamp(56px, 9vw, 96px);
+}
+
+.home-hero-content .gh-inner {
+    width: 100%;
+}
+
+.home-hero-title {
+    max-width: 900px;
+    margin: 0;
+    font-size: clamp(4.8rem, 8vw, 9.2rem);
+    font-weight: 800;
+    line-height: 0.98;
+    color: inherit;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+}
+
+.home-hero-description {
+    max-width: 680px;
+    margin-top: 24px;
+    font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+    line-height: 1.55;
+    text-wrap: pretty;
+}
+
+.home-hero-jump {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    padding: 11px 16px;
+    margin-top: 32px;
+    font-weight: 700;
+    color: var(--dark-gray-color);
+    background-color: var(--yellow-color);
+    border: 1px solid var(--dark-gray-color);
+    border-radius: 999px;
+    transition: color 180ms var(--animation-base), background-color 180ms var(--animation-base), transform 180ms var(--animation-base);
+}
+
+.home-hero-jump:hover {
+    color: var(--dark-gray-color);
+    background-color: var(--white-color);
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.home-hero-jump svg {
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 767px) {
+    .home-hero {
+        min-height: min(68svh, 620px);
+    }
+
+    .home-hero:not(.has-cover)::after {
+        right: 28%;
+    }
+
+    .home-hero-title {
+        font-size: clamp(4rem, 15vw, 6.4rem);
+    }
+}

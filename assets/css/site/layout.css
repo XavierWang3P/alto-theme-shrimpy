@@ -6,9 +6,27 @@
 
 .site-content {
     flex-grow: 1;
-    padding-top: 60px;
+    padding-top: clamp(40px, 6vw, 72px);
 }
 
+.home-template .site-content,
+.post-template .site-content,
 .page-template .site-content {
     padding-top: 0;
+}
+
+.content-area {
+    padding-top: clamp(48px, 7vw, 88px);
+}
+
+.home-template .content-area {
+    padding-top: var(--section-spacing);
+}
+
+.post-template .content-area {
+    padding-top: 0;
+}
+
+.gh-foot {
+    border-top: 1px solid var(--mid-gray-color);
 }

@@ -13,6 +13,11 @@
     margin-bottom: 0;
 }
 
+.related-posts .post-media {
+    overflow: hidden;
+    border-radius: var(--radius-image);
+}
+
 .related-posts .post-header {
     flex-direction: column;
 }
@@ -30,4 +35,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
+}
+
+.related-feed .post-image {
+    transition: transform 400ms var(--animation-base);
+}
+
+.related-feed .post-image-link:hover .post-image {
+    transform: scale(1.025);
 }

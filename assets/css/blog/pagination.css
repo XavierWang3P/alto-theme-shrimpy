@@ -20,6 +20,16 @@
     display: inline-flex;
     gap: 4px;
     align-items: center;
+    padding: 9px 13px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    transition: border-color 180ms var(--animation-base), transform 180ms var(--animation-base);
+}
+
+.pagination a:hover {
+    border-color: var(--border-color);
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
 .pagination-left svg {

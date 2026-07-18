@@ -1,0 +1,14 @@
+node_modules/
+.pnpm-store/
+
+dist/
+
+.DS_Store
+*.log
+pnpm-debug.log*
+
+.ghost/
+content/
+*.sqlite*
+.env
+.env.*
